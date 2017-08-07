@@ -20,8 +20,7 @@ DIR=$(git rev-parse --show-toplevel)/.docker
 
 docker-compose -f $DOCKER_COMPOSE run --rm qgis-deps
 
-ccachedir=${HOME}/.ccache
-mkdir -p $ccachedir
+mkdir -p $CCACHE_DIR
 
 docker-compose -f $DOCKER_COMPOSE run --rm qgis-deps
 
