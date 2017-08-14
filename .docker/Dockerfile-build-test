@@ -2,7 +2,10 @@
 FROM      qgis/qgis3-build-deps:current_build
 MAINTAINER Denis Rouzaud <denis.rouzaud@gmail.com>
 
-RUN ls /root/.ccache
 
-RUN echo "DDDD"
-RUN /root/QGIS/.ci/travis/linux/docker-build-test.sh
+
+COPY . /root/QGIS
+
+
+
+RUN /root/QGIS/.docker/docker-build-test.sh
