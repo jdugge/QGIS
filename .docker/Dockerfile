@@ -1,5 +1,3 @@
-
-
 FROM      ubuntu:16.04
 MAINTAINER Denis Rouzaud <denis.rouzaud@gmail.com>
 
@@ -20,6 +18,7 @@ RUN  apt-get update \
     dh-python \
     flex \
     gdal-bin \
+    git \
     graphviz \
     grass-dev \
     libexpat1-dev \
@@ -102,8 +101,6 @@ ENV QT_SELECT=5
 # RUN cmake --version
 # RUN ${CC} --version
 # RUN ${CXX} --version
-
-RUN apt-get install -y git
 
 # RUN locale-gen en_US.UTF-8
 # ENV LANG=en_US.UTF-8
