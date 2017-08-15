@@ -3,16 +3,18 @@ services:
   postgres:
     image: kartoza/postgis:9.5-2.2
     environment:
-      - ALLOW_IP_RANGE=172.18.0.0/16
+      - ALLOW_IP_RANGE="172.18.0.0/16"
 
   qgis-build-and-test:
     build:
-      context: ..
-      dockerfile: .docker/Dockerfile-build-test
-    # tty: true
+      context: .
+      dockerfile: Dockerfile-build-test
+      args:
+        DOCKER_TAG: ${DOCKER_TAG}
+    tty: true
     image: qgis/qgis3-run:${DOCKER_TAG}
     volumes:
-      - ${TRAVIS_BUILD_DIR}:/root/QGIS-host
+      - ${TRAVIS_BUILD_DIR}:/root/QGIS
       - $HOME/.ccache:/root/.ccache  # if changed, also change env var
     links:
       - postgres
